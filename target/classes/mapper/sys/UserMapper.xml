@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+    <select id="queryUserNameList" resultType="PcmcUser">
+        select * from pcmc_user
+    </select>
+
+    <select id="queryListA" resultType="String">
+        select distinct OLD_SEGMENT3 from XXT_SEGMENT3_MAP_ALL_B_0730 where 1=1
+        <if test="nameB !=null and nameB !=''">
+            and NEW_SEGMENT3=#{nameB}
+        </if>
+    </select>
+
+    <select id="queryListB" resultType="String">
+        select NEW_SEGMENT3 from XXT_SEGMENT3_MAP_ALL_B_0730 where 1=1
+        <if test="nameA !=null and nameA !=''">
+            and old_segment3=#{nameA}
+        </if>
+    </select>
+
+    <select id="getDeptListByType" parameterType="java.util.HashMap" resultType="DistRelaBean">
+        SELECT distinct a.deptcd "deptcd",
+        a.sprrdp "sprrdp",
+        a.levelp "levelp",
+        a.stacid "stacid",
+        a.relatp "relatp",
+        a.reptdp "reptdp",
+        a.reptfg "reptfg"
+        FROM com_dist_rela a
+        inner join pcmc_dept b on a.deptcd = b.deptcode
+        WHERE  a.relatp='02'
+        <if test="stacid != null and stacid !=''">
+            and a.stacid=#{stacid}
+        </if>
+        <if test="deptcd != null and deptcd !=''">
+            and  a.deptcd=#{deptcd}
+        </if>
+        <if test="reptdp != null and reptdp !=''">
+            and  a.reptdp=#{reptdp}
+        </if>
+    </select>
+</mapper>

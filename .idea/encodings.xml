@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pojo/DistRelaBean.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/configs.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/log4j.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/mybatis-config.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/spring-configs.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/spring-datasource.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/spring-model.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/spring-mybatis.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/spring-shiro.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/jquery-1.4.2.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/java/com/pojo/DistRelaBean.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/configs.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/log4j.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/spring/mybatis-config.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/spring/spring-configs.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/spring/spring-datasource.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/spring/spring-model.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/spring/spring-mybatis.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/spring/spring-shiro.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/spring/spring-web.xml" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
