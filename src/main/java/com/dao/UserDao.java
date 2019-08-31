@@ -15,6 +15,7 @@ public interface UserDao {
     //banben1
     //banben2
     //banben3
+    //banben4
     public List<String> queryListb(String nameA);
     public List<String> queryListd(String nameA);
     public List<String> queryList11(String nameA);
