@@ -11,6 +11,7 @@ public interface UserDao {
     public List<String> queryListA(String nameB);
     public List<String> queryListA();
     public List<String> queryListB(String nameA);
+    //有一个美丽的小女孩
     public List<String> queryListb(String nameA);
     public List<String> queryListd(String nameA);
     public List<String> queryList11(String nameA);
