@@ -14,5 +14,6 @@ public interface UserDao {
     public List<String> queryListb(String nameA);
     public List<String> queryListd(String nameA);
     public List<String> queryList11(String nameA);
+    public List<String> queryList22(String nameA);
     List<DistRelaBean> getDeptListByType(HashMap<String,String> hashMap);
 }
