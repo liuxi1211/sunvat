@@ -1,9 +1,0 @@
-com\pojo\DistRelaBean.class
-com\service\UserServiceImpl.class
-com\util\HttpClient.class
-com\service\HttpService.class
-com\dao\UserDao.class
-com\controller\PcmcUserController.class
-com\pojo\PcmcUser.class
-com\service\HttpServiceImpl.class
-com\service\UserService.class
