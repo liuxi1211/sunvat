@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserDao">
     <select id="queryUserNameList" resultType="PcmcUser">
-        select * from pcmc_user
+        select userid "id" ,usercode "name",username "userCard" from pcmc_user
     </select>
 
     <select id="queryListA" resultType="String">

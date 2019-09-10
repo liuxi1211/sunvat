@@ -30,15 +30,13 @@ public class PcmcUserController {
     @Autowired
     private HttpServiceImpl httpService;
 
-
     @RequestMapping("demo")
     @ResponseBody
-    public String queryUserNameList(){
+    public List<PcmcUser> queryUserNameList(){
         log.debug("进入controller方法");
         List<PcmcUser> pcmcUsers = userServiceImpl.queryUserNameList();
-        return "demo";
+        return pcmcUsers;
     }
-
     @ResponseBody
     @RequestMapping("hahaha")
     public String getHttpClient(){
