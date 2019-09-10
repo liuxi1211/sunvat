@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.GliVchrMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.GliVchr" >
+    <id column="STACID" property="stacid" jdbcType="DECIMAL" />
+    <id column="SYSTID" property="systid" jdbcType="CHAR" />
+    <id column="TRANDT" property="trandt" jdbcType="CHAR" />
+    <id column="TRANSQ" property="transq" jdbcType="VARCHAR" />
+    <id column="VCHRSQ" property="vchrsq" jdbcType="VARCHAR" />
+    <result column="TRANBR" property="tranbr" jdbcType="VARCHAR" />
+    <result column="ACCTBR" property="acctbr" jdbcType="VARCHAR" />
+    <result column="ITEMCD" property="itemcd" jdbcType="VARCHAR" />
+    <result column="CRCYCD" property="crcycd" jdbcType="CHAR" />
+    <result column="IOFLAG" property="ioflag" jdbcType="CHAR" />
+    <result column="CENTCD" property="centcd" jdbcType="VARCHAR" />
+    <result column="PRSNCD" property="prsncd" jdbcType="VARCHAR" />
+    <result column="CUSTCD" property="custcd" jdbcType="VARCHAR" />
+    <result column="PRDUCD" property="prducd" jdbcType="VARCHAR" />
+    <result column="PRLNCD" property="prlncd" jdbcType="VARCHAR" />
+    <result column="ACCTNO" property="acctno" jdbcType="VARCHAR" />
+    <result column="TRANTP" property="trantp" jdbcType="VARCHAR" />
+    <result column="AMNTCD" property="amntcd" jdbcType="VARCHAR" />
+    <result column="TRANAM" property="tranam" jdbcType="DECIMAL" />
+    <result column="SMRYTX" property="smrytx" jdbcType="VARCHAR" />
+    <result column="EXCHCN" property="exchcn" jdbcType="DECIMAL" />
+    <result column="EXCHUS" property="exchus" jdbcType="DECIMAL" />
+    <result column="USERCD" property="usercd" jdbcType="VARCHAR" />
+    <result column="SOURDT" property="sourdt" jdbcType="CHAR" />
+    <result column="SOURSQ" property="soursq" jdbcType="VARCHAR" />
+    <result column="SOURST" property="sourst" jdbcType="CHAR" />
+    <result column="SRVCSQ" property="srvcsq" jdbcType="VARCHAR" />
+    <result column="TOITEM" property="toitem" jdbcType="VARCHAR" />
+    <result column="ASSIS0" property="assis0" jdbcType="VARCHAR" />
+    <result column="ASSIS1" property="assis1" jdbcType="VARCHAR" />
+    <result column="ASSIS2" property="assis2" jdbcType="VARCHAR" />
+    <result column="ASSIS3" property="assis3" jdbcType="VARCHAR" />
+    <result column="ASSIS4" property="assis4" jdbcType="VARCHAR" />
+    <result column="ASSIS5" property="assis5" jdbcType="VARCHAR" />
+    <result column="ASSIS6" property="assis6" jdbcType="VARCHAR" />
+    <result column="ASSIS7" property="assis7" jdbcType="VARCHAR" />
+    <result column="ASSIS8" property="assis8" jdbcType="VARCHAR" />
+    <result column="ASSIS9" property="assis9" jdbcType="VARCHAR" />
+    <result column="DEALST" property="dealst" jdbcType="CHAR" />
+    <result column="PRCSCD" property="prcscd" jdbcType="VARCHAR" />
+    <result column="ITEMNA" property="itemna" jdbcType="VARCHAR" />
+    <result column="PRCSNA" property="prcsna" jdbcType="VARCHAR" />
+    <result column="STRKST" property="strkst" jdbcType="CHAR" />
+    <result column="STRKDT" property="strkdt" jdbcType="CHAR" />
+    <result column="STRKSQ" property="strksq" jdbcType="VARCHAR" />
+    <result column="CRCYSD" property="crcysd" jdbcType="CHAR" />
+    <result column="TRANEQ" property="traneq" jdbcType="DECIMAL" />
+    <result column="TAXBST" property="taxbst" jdbcType="CHAR" />
+    <result column="DEALMG" property="dealmg" jdbcType="VARCHAR" />
+    <result column="BATHID" property="bathid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STACID, SYSTID, TRANDT, TRANSQ, VCHRSQ, TRANBR, ACCTBR, ITEMCD, CRCYCD, IOFLAG, CENTCD, 
+    PRSNCD, CUSTCD, PRDUCD, PRLNCD, ACCTNO, TRANTP, AMNTCD, TRANAM, SMRYTX, EXCHCN, EXCHUS, 
+    USERCD, SOURDT, SOURSQ, SOURST, SRVCSQ, TOITEM, ASSIS0, ASSIS1, ASSIS2, ASSIS3, ASSIS4, 
+    ASSIS5, ASSIS6, ASSIS7, ASSIS8, ASSIS9, DEALST, PRCSCD, ITEMNA, PRCSNA, STRKST, STRKDT, 
+    STRKSQ, CRCYSD, TRANEQ, TAXBST, DEALMG, BATHID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from GLI_VCHR
+    where STACID = #{stacid,jdbcType=DECIMAL}
+      and SYSTID = #{systid,jdbcType=CHAR}
+      and TRANDT = #{trandt,jdbcType=CHAR}
+      and TRANSQ = #{transq,jdbcType=VARCHAR}
+      and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from GLI_VCHR
+    where STACID = #{stacid,jdbcType=DECIMAL}
+      and SYSTID = #{systid,jdbcType=CHAR}
+      and TRANDT = #{trandt,jdbcType=CHAR}
+      and TRANSQ = #{transq,jdbcType=VARCHAR}
+      and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.GliVchr" >
+    insert into GLI_VCHR (STACID, SYSTID, TRANDT, 
+      TRANSQ, VCHRSQ, TRANBR, 
+      ACCTBR, ITEMCD, CRCYCD, 
+      IOFLAG, CENTCD, PRSNCD, 
+      CUSTCD, PRDUCD, PRLNCD, 
+      ACCTNO, TRANTP, AMNTCD, 
+      TRANAM, SMRYTX, EXCHCN, 
+      EXCHUS, USERCD, SOURDT, 
+      SOURSQ, SOURST, SRVCSQ, 
+      TOITEM, ASSIS0, ASSIS1, 
+      ASSIS2, ASSIS3, ASSIS4, 
+      ASSIS5, ASSIS6, ASSIS7, 
+      ASSIS8, ASSIS9, DEALST, 
+      PRCSCD, ITEMNA, PRCSNA, 
+      STRKST, STRKDT, STRKSQ, CRCYSD, 
+      TRANEQ, TAXBST, DEALMG, 
+      BATHID)
+    values (#{stacid,jdbcType=DECIMAL}, #{systid,jdbcType=CHAR}, #{trandt,jdbcType=CHAR}, 
+      #{transq,jdbcType=VARCHAR}, #{vchrsq,jdbcType=VARCHAR}, #{tranbr,jdbcType=VARCHAR}, 
+      #{acctbr,jdbcType=VARCHAR}, #{itemcd,jdbcType=VARCHAR}, #{crcycd,jdbcType=CHAR}, 
+      #{ioflag,jdbcType=CHAR}, #{centcd,jdbcType=VARCHAR}, #{prsncd,jdbcType=VARCHAR}, 
+      #{custcd,jdbcType=VARCHAR}, #{prducd,jdbcType=VARCHAR}, #{prlncd,jdbcType=VARCHAR}, 
+      #{acctno,jdbcType=VARCHAR}, #{trantp,jdbcType=VARCHAR}, #{amntcd,jdbcType=VARCHAR}, 
+      #{tranam,jdbcType=DECIMAL}, #{smrytx,jdbcType=VARCHAR}, #{exchcn,jdbcType=DECIMAL}, 
+      #{exchus,jdbcType=DECIMAL}, #{usercd,jdbcType=VARCHAR}, #{sourdt,jdbcType=CHAR}, 
+      #{soursq,jdbcType=VARCHAR}, #{sourst,jdbcType=CHAR}, #{srvcsq,jdbcType=VARCHAR}, 
+      #{toitem,jdbcType=VARCHAR}, #{assis0,jdbcType=VARCHAR}, #{assis1,jdbcType=VARCHAR}, 
+      #{assis2,jdbcType=VARCHAR}, #{assis3,jdbcType=VARCHAR}, #{assis4,jdbcType=VARCHAR}, 
+      #{assis5,jdbcType=VARCHAR}, #{assis6,jdbcType=VARCHAR}, #{assis7,jdbcType=VARCHAR}, 
+      #{assis8,jdbcType=VARCHAR}, #{assis9,jdbcType=VARCHAR}, #{dealst,jdbcType=CHAR}, 
+      #{prcscd,jdbcType=VARCHAR}, #{itemna,jdbcType=VARCHAR}, #{prcsna,jdbcType=VARCHAR}, 
+      #{strkst,jdbcType=CHAR}, #{strkdt,jdbcType=CHAR}, #{strksq,jdbcType=VARCHAR}, #{crcysd,jdbcType=CHAR}, 
+      #{traneq,jdbcType=DECIMAL}, #{taxbst,jdbcType=CHAR}, #{dealmg,jdbcType=VARCHAR}, 
+      #{bathid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.GliVchr" >
+    insert into GLI_VCHR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stacid != null" >
+        STACID,
+      </if>
+      <if test="systid != null" >
+        SYSTID,
+      </if>
+      <if test="trandt != null" >
+        TRANDT,
+      </if>
+      <if test="transq != null" >
+        TRANSQ,
+      </if>
+      <if test="vchrsq != null" >
+        VCHRSQ,
+      </if>
+      <if test="tranbr != null" >
+        TRANBR,
+      </if>
+      <if test="acctbr != null" >
+        ACCTBR,
+      </if>
+      <if test="itemcd != null" >
+        ITEMCD,
+      </if>
+      <if test="crcycd != null" >
+        CRCYCD,
+      </if>
+      <if test="ioflag != null" >
+        IOFLAG,
+      </if>
+      <if test="centcd != null" >
+        CENTCD,
+      </if>
+      <if test="prsncd != null" >
+        PRSNCD,
+      </if>
+      <if test="custcd != null" >
+        CUSTCD,
+      </if>
+      <if test="prducd != null" >
+        PRDUCD,
+      </if>
+      <if test="prlncd != null" >
+        PRLNCD,
+      </if>
+      <if test="acctno != null" >
+        ACCTNO,
+      </if>
+      <if test="trantp != null" >
+        TRANTP,
+      </if>
+      <if test="amntcd != null" >
+        AMNTCD,
+      </if>
+      <if test="tranam != null" >
+        TRANAM,
+      </if>
+      <if test="smrytx != null" >
+        SMRYTX,
+      </if>
+      <if test="exchcn != null" >
+        EXCHCN,
+      </if>
+      <if test="exchus != null" >
+        EXCHUS,
+      </if>
+      <if test="usercd != null" >
+        USERCD,
+      </if>
+      <if test="sourdt != null" >
+        SOURDT,
+      </if>
+      <if test="soursq != null" >
+        SOURSQ,
+      </if>
+      <if test="sourst != null" >
+        SOURST,
+      </if>
+      <if test="srvcsq != null" >
+        SRVCSQ,
+      </if>
+      <if test="toitem != null" >
+        TOITEM,
+      </if>
+      <if test="assis0 != null" >
+        ASSIS0,
+      </if>
+      <if test="assis1 != null" >
+        ASSIS1,
+      </if>
+      <if test="assis2 != null" >
+        ASSIS2,
+      </if>
+      <if test="assis3 != null" >
+        ASSIS3,
+      </if>
+      <if test="assis4 != null" >
+        ASSIS4,
+      </if>
+      <if test="assis5 != null" >
+        ASSIS5,
+      </if>
+      <if test="assis6 != null" >
+        ASSIS6,
+      </if>
+      <if test="assis7 != null" >
+        ASSIS7,
+      </if>
+      <if test="assis8 != null" >
+        ASSIS8,
+      </if>
+      <if test="assis9 != null" >
+        ASSIS9,
+      </if>
+      <if test="dealst != null" >
+        DEALST,
+      </if>
+      <if test="prcscd != null" >
+        PRCSCD,
+      </if>
+      <if test="itemna != null" >
+        ITEMNA,
+      </if>
+      <if test="prcsna != null" >
+        PRCSNA,
+      </if>
+      <if test="strkst != null" >
+        STRKST,
+      </if>
+      <if test="strkdt != null" >
+        STRKDT,
+      </if>
+      <if test="strksq != null" >
+        STRKSQ,
+      </if>
+      <if test="crcysd != null" >
+        CRCYSD,
+      </if>
+      <if test="traneq != null" >
+        TRANEQ,
+      </if>
+      <if test="taxbst != null" >
+        TAXBST,
+      </if>
+      <if test="dealmg != null" >
+        DEALMG,
+      </if>
+      <if test="bathid != null" >
+        BATHID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stacid != null" >
+        #{stacid,jdbcType=DECIMAL},
+      </if>
+      <if test="systid != null" >
+        #{systid,jdbcType=CHAR},
+      </if>
+      <if test="trandt != null" >
+        #{trandt,jdbcType=CHAR},
+      </if>
+      <if test="transq != null" >
+        #{transq,jdbcType=VARCHAR},
+      </if>
+      <if test="vchrsq != null" >
+        #{vchrsq,jdbcType=VARCHAR},
+      </if>
+      <if test="tranbr != null" >
+        #{tranbr,jdbcType=VARCHAR},
+      </if>
+      <if test="acctbr != null" >
+        #{acctbr,jdbcType=VARCHAR},
+      </if>
+      <if test="itemcd != null" >
+        #{itemcd,jdbcType=VARCHAR},
+      </if>
+      <if test="crcycd != null" >
+        #{crcycd,jdbcType=CHAR},
+      </if>
+      <if test="ioflag != null" >
+        #{ioflag,jdbcType=CHAR},
+      </if>
+      <if test="centcd != null" >
+        #{centcd,jdbcType=VARCHAR},
+      </if>
+      <if test="prsncd != null" >
+        #{prsncd,jdbcType=VARCHAR},
+      </if>
+      <if test="custcd != null" >
+        #{custcd,jdbcType=VARCHAR},
+      </if>
+      <if test="prducd != null" >
+        #{prducd,jdbcType=VARCHAR},
+      </if>
+      <if test="prlncd != null" >
+        #{prlncd,jdbcType=VARCHAR},
+      </if>
+      <if test="acctno != null" >
+        #{acctno,jdbcType=VARCHAR},
+      </if>
+      <if test="trantp != null" >
+        #{trantp,jdbcType=VARCHAR},
+      </if>
+      <if test="amntcd != null" >
+        #{amntcd,jdbcType=VARCHAR},
+      </if>
+      <if test="tranam != null" >
+        #{tranam,jdbcType=DECIMAL},
+      </if>
+      <if test="smrytx != null" >
+        #{smrytx,jdbcType=VARCHAR},
+      </if>
+      <if test="exchcn != null" >
+        #{exchcn,jdbcType=DECIMAL},
+      </if>
+      <if test="exchus != null" >
+        #{exchus,jdbcType=DECIMAL},
+      </if>
+      <if test="usercd != null" >
+        #{usercd,jdbcType=VARCHAR},
+      </if>
+      <if test="sourdt != null" >
+        #{sourdt,jdbcType=CHAR},
+      </if>
+      <if test="soursq != null" >
+        #{soursq,jdbcType=VARCHAR},
+      </if>
+      <if test="sourst != null" >
+        #{sourst,jdbcType=CHAR},
+      </if>
+      <if test="srvcsq != null" >
+        #{srvcsq,jdbcType=VARCHAR},
+      </if>
+      <if test="toitem != null" >
+        #{toitem,jdbcType=VARCHAR},
+      </if>
+      <if test="assis0 != null" >
+        #{assis0,jdbcType=VARCHAR},
+      </if>
+      <if test="assis1 != null" >
+        #{assis1,jdbcType=VARCHAR},
+      </if>
+      <if test="assis2 != null" >
+        #{assis2,jdbcType=VARCHAR},
+      </if>
+      <if test="assis3 != null" >
+        #{assis3,jdbcType=VARCHAR},
+      </if>
+      <if test="assis4 != null" >
+        #{assis4,jdbcType=VARCHAR},
+      </if>
+      <if test="assis5 != null" >
+        #{assis5,jdbcType=VARCHAR},
+      </if>
+      <if test="assis6 != null" >
+        #{assis6,jdbcType=VARCHAR},
+      </if>
+      <if test="assis7 != null" >
+        #{assis7,jdbcType=VARCHAR},
+      </if>
+      <if test="assis8 != null" >
+        #{assis8,jdbcType=VARCHAR},
+      </if>
+      <if test="assis9 != null" >
+        #{assis9,jdbcType=VARCHAR},
+      </if>
+      <if test="dealst != null" >
+        #{dealst,jdbcType=CHAR},
+      </if>
+      <if test="prcscd != null" >
+        #{prcscd,jdbcType=VARCHAR},
+      </if>
+      <if test="itemna != null" >
+        #{itemna,jdbcType=VARCHAR},
+      </if>
+      <if test="prcsna != null" >
+        #{prcsna,jdbcType=VARCHAR},
+      </if>
+      <if test="strkst != null" >
+        #{strkst,jdbcType=CHAR},
+      </if>
+      <if test="strkdt != null" >
+        #{strkdt,jdbcType=CHAR},
+      </if>
+      <if test="strksq != null" >
+        #{strksq,jdbcType=VARCHAR},
+      </if>
+      <if test="crcysd != null" >
+        #{crcysd,jdbcType=CHAR},
+      </if>
+      <if test="traneq != null" >
+        #{traneq,jdbcType=DECIMAL},
+      </if>
+      <if test="taxbst != null" >
+        #{taxbst,jdbcType=CHAR},
+      </if>
+      <if test="dealmg != null" >
+        #{dealmg,jdbcType=VARCHAR},
+      </if>
+      <if test="bathid != null" >
+        #{bathid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.GliVchr" >
+    update GLI_VCHR
+    <set >
+      <if test="tranbr != null" >
+        TRANBR = #{tranbr,jdbcType=VARCHAR},
+      </if>
+      <if test="acctbr != null" >
+        ACCTBR = #{acctbr,jdbcType=VARCHAR},
+      </if>
+      <if test="itemcd != null" >
+        ITEMCD = #{itemcd,jdbcType=VARCHAR},
+      </if>
+      <if test="crcycd != null" >
+        CRCYCD = #{crcycd,jdbcType=CHAR},
+      </if>
+      <if test="ioflag != null" >
+        IOFLAG = #{ioflag,jdbcType=CHAR},
+      </if>
+      <if test="centcd != null" >
+        CENTCD = #{centcd,jdbcType=VARCHAR},
+      </if>
+      <if test="prsncd != null" >
+        PRSNCD = #{prsncd,jdbcType=VARCHAR},
+      </if>
+      <if test="custcd != null" >
+        CUSTCD = #{custcd,jdbcType=VARCHAR},
+      </if>
+      <if test="prducd != null" >
+        PRDUCD = #{prducd,jdbcType=VARCHAR},
+      </if>
+      <if test="prlncd != null" >
+        PRLNCD = #{prlncd,jdbcType=VARCHAR},
+      </if>
+      <if test="acctno != null" >
+        ACCTNO = #{acctno,jdbcType=VARCHAR},
+      </if>
+      <if test="trantp != null" >
+        TRANTP = #{trantp,jdbcType=VARCHAR},
+      </if>
+      <if test="amntcd != null" >
+        AMNTCD = #{amntcd,jdbcType=VARCHAR},
+      </if>
+      <if test="tranam != null" >
+        TRANAM = #{tranam,jdbcType=DECIMAL},
+      </if>
+      <if test="smrytx != null" >
+        SMRYTX = #{smrytx,jdbcType=VARCHAR},
+      </if>
+      <if test="exchcn != null" >
+        EXCHCN = #{exchcn,jdbcType=DECIMAL},
+      </if>
+      <if test="exchus != null" >
+        EXCHUS = #{exchus,jdbcType=DECIMAL},
+      </if>
+      <if test="usercd != null" >
+        USERCD = #{usercd,jdbcType=VARCHAR},
+      </if>
+      <if test="sourdt != null" >
+        SOURDT = #{sourdt,jdbcType=CHAR},
+      </if>
+      <if test="soursq != null" >
+        SOURSQ = #{soursq,jdbcType=VARCHAR},
+      </if>
+      <if test="sourst != null" >
+        SOURST = #{sourst,jdbcType=CHAR},
+      </if>
+      <if test="srvcsq != null" >
+        SRVCSQ = #{srvcsq,jdbcType=VARCHAR},
+      </if>
+      <if test="toitem != null" >
+        TOITEM = #{toitem,jdbcType=VARCHAR},
+      </if>
+      <if test="assis0 != null" >
+        ASSIS0 = #{assis0,jdbcType=VARCHAR},
+      </if>
+      <if test="assis1 != null" >
+        ASSIS1 = #{assis1,jdbcType=VARCHAR},
+      </if>
+      <if test="assis2 != null" >
+        ASSIS2 = #{assis2,jdbcType=VARCHAR},
+      </if>
+      <if test="assis3 != null" >
+        ASSIS3 = #{assis3,jdbcType=VARCHAR},
+      </if>
+      <if test="assis4 != null" >
+        ASSIS4 = #{assis4,jdbcType=VARCHAR},
+      </if>
+      <if test="assis5 != null" >
+        ASSIS5 = #{assis5,jdbcType=VARCHAR},
+      </if>
+      <if test="assis6 != null" >
+        ASSIS6 = #{assis6,jdbcType=VARCHAR},
+      </if>
+      <if test="assis7 != null" >
+        ASSIS7 = #{assis7,jdbcType=VARCHAR},
+      </if>
+      <if test="assis8 != null" >
+        ASSIS8 = #{assis8,jdbcType=VARCHAR},
+      </if>
+      <if test="assis9 != null" >
+        ASSIS9 = #{assis9,jdbcType=VARCHAR},
+      </if>
+      <if test="dealst != null" >
+        DEALST = #{dealst,jdbcType=CHAR},
+      </if>
+      <if test="prcscd != null" >
+        PRCSCD = #{prcscd,jdbcType=VARCHAR},
+      </if>
+      <if test="itemna != null" >
+        ITEMNA = #{itemna,jdbcType=VARCHAR},
+      </if>
+      <if test="prcsna != null" >
+        PRCSNA = #{prcsna,jdbcType=VARCHAR},
+      </if>
+      <if test="strkst != null" >
+        STRKST = #{strkst,jdbcType=CHAR},
+      </if>
+      <if test="strkdt != null" >
+        STRKDT = #{strkdt,jdbcType=CHAR},
+      </if>
+      <if test="strksq != null" >
+        STRKSQ = #{strksq,jdbcType=VARCHAR},
+      </if>
+      <if test="crcysd != null" >
+        CRCYSD = #{crcysd,jdbcType=CHAR},
+      </if>
+      <if test="traneq != null" >
+        TRANEQ = #{traneq,jdbcType=DECIMAL},
+      </if>
+      <if test="taxbst != null" >
+        TAXBST = #{taxbst,jdbcType=CHAR},
+      </if>
+      <if test="dealmg != null" >
+        DEALMG = #{dealmg,jdbcType=VARCHAR},
+      </if>
+      <if test="bathid != null" >
+        BATHID = #{bathid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STACID = #{stacid,jdbcType=DECIMAL}
+      and SYSTID = #{systid,jdbcType=CHAR}
+      and TRANDT = #{trandt,jdbcType=CHAR}
+      and TRANSQ = #{transq,jdbcType=VARCHAR}
+      and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.GliVchr" >
+    update GLI_VCHR
+    set TRANBR = #{tranbr,jdbcType=VARCHAR},
+      ACCTBR = #{acctbr,jdbcType=VARCHAR},
+      ITEMCD = #{itemcd,jdbcType=VARCHAR},
+      CRCYCD = #{crcycd,jdbcType=CHAR},
+      IOFLAG = #{ioflag,jdbcType=CHAR},
+      CENTCD = #{centcd,jdbcType=VARCHAR},
+      PRSNCD = #{prsncd,jdbcType=VARCHAR},
+      CUSTCD = #{custcd,jdbcType=VARCHAR},
+      PRDUCD = #{prducd,jdbcType=VARCHAR},
+      PRLNCD = #{prlncd,jdbcType=VARCHAR},
+      ACCTNO = #{acctno,jdbcType=VARCHAR},
+      TRANTP = #{trantp,jdbcType=VARCHAR},
+      AMNTCD = #{amntcd,jdbcType=VARCHAR},
+      TRANAM = #{tranam,jdbcType=DECIMAL},
+      SMRYTX = #{smrytx,jdbcType=VARCHAR},
+      EXCHCN = #{exchcn,jdbcType=DECIMAL},
+      EXCHUS = #{exchus,jdbcType=DECIMAL},
+      USERCD = #{usercd,jdbcType=VARCHAR},
+      SOURDT = #{sourdt,jdbcType=CHAR},
+      SOURSQ = #{soursq,jdbcType=VARCHAR},
+      SOURST = #{sourst,jdbcType=CHAR},
+      SRVCSQ = #{srvcsq,jdbcType=VARCHAR},
+      TOITEM = #{toitem,jdbcType=VARCHAR},
+      ASSIS0 = #{assis0,jdbcType=VARCHAR},
+      ASSIS1 = #{assis1,jdbcType=VARCHAR},
+      ASSIS2 = #{assis2,jdbcType=VARCHAR},
+      ASSIS3 = #{assis3,jdbcType=VARCHAR},
+      ASSIS4 = #{assis4,jdbcType=VARCHAR},
+      ASSIS5 = #{assis5,jdbcType=VARCHAR},
+      ASSIS6 = #{assis6,jdbcType=VARCHAR},
+      ASSIS7 = #{assis7,jdbcType=VARCHAR},
+      ASSIS8 = #{assis8,jdbcType=VARCHAR},
+      ASSIS9 = #{assis9,jdbcType=VARCHAR},
+      DEALST = #{dealst,jdbcType=CHAR},
+      PRCSCD = #{prcscd,jdbcType=VARCHAR},
+      ITEMNA = #{itemna,jdbcType=VARCHAR},
+      PRCSNA = #{prcsna,jdbcType=VARCHAR},
+      STRKST = #{strkst,jdbcType=CHAR},
+      STRKDT = #{strkdt,jdbcType=CHAR},
+      STRKSQ = #{strksq,jdbcType=VARCHAR},
+      CRCYSD = #{crcysd,jdbcType=CHAR},
+      TRANEQ = #{traneq,jdbcType=DECIMAL},
+      TAXBST = #{taxbst,jdbcType=CHAR},
+      DEALMG = #{dealmg,jdbcType=VARCHAR},
+      BATHID = #{bathid,jdbcType=VARCHAR}
+    where STACID = #{stacid,jdbcType=DECIMAL}
+      and SYSTID = #{systid,jdbcType=CHAR}
+      and TRANDT = #{trandt,jdbcType=CHAR}
+      and TRANSQ = #{transq,jdbcType=VARCHAR}
+      and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+  </update>
+</mapper>
