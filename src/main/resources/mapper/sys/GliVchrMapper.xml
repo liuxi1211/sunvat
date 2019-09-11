@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.GliVchrMapper" >
-  <resultMap id="BaseResultMap" type="com.pojo.GliVchr" >
+  <resultMap id="resultGliVchr" type="com.pojo.GliVchr" >
     <id column="STACID" property="stacid" jdbcType="DECIMAL" />
     <id column="SYSTID" property="systid" jdbcType="CHAR" />
     <id column="TRANDT" property="trandt" jdbcType="CHAR" />
@@ -60,7 +60,7 @@
     ASSIS5, ASSIS6, ASSIS7, ASSIS8, ASSIS9, DEALST, PRCSCD, ITEMNA, PRCSNA, STRKST, STRKDT, 
     STRKSQ, CRCYSD, TRANEQ, TAXBST, DEALMG, BATHID
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+  <select id="selectByPrimaryKey" resultMap="resultGliVchr" parameterType="map" >
     select 
     <include refid="Base_Column_List" />
     from GLI_VCHR

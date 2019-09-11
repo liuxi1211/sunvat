@@ -2,9 +2,11 @@ package com.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.github.pagehelper.Page;
 import com.pojo.PcmcUser;
 import com.service.HttpService;
 import com.service.HttpServiceImpl;
+import com.service.PcmcUserService;
 import com.service.UserServiceImpl;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.util.HttpClient;
@@ -17,8 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.swing.*;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +29,8 @@ public class PcmcUserController {
     private UserServiceImpl userServiceImpl;
     @Autowired
     private HttpServiceImpl httpService;
+    @Autowired
+    private PcmcUserService pcmcUserService;
 
     @RequestMapping("demo")
     @ResponseBody
@@ -42,5 +44,13 @@ public class PcmcUserController {
     public String getHttpClient(){
         List<Map<String, String>> resultObjects = userServiceImpl.getResultObjects();
         return JSONObject.toJSONString(resultObjects);
+    }
+
+    @ResponseBody
+    @RequestMapping("list")
+    public List<PcmcUser> queryPcmcUserList(int start,int end){
+        PcmcUser pcmcUser=new PcmcUser();
+        List<PcmcUser> pcmcUsers = pcmcUserService.selectPcmcUserList(pcmcUser,start,end);
+        return  pcmcUsers;
     }
 }
