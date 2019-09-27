@@ -16,7 +16,7 @@ public class StrTest {
 
     @Test
     public void demo1(){
-        String bsnsdt="20190731";
+        String bsnsdt="20191231";
         SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
         Date parse = null;
         try {
@@ -30,13 +30,12 @@ public class StrTest {
         System.out.println(sdf.format(instance.getTime()));
 
 
-        String oldBsnsdt="20190701";
+
+        String oldBsnsdt="20191231";
         Calendar c = Calendar.getInstance();
-        int year = Integer.valueOf(oldBsnsdt.substring(0, 4));
-        int month = Integer.valueOf(oldBsnsdt.substring(4, 6)) - 1;
-        int day = Integer.valueOf(oldBsnsdt.substring(6, 8)) + 1;
-
-
+        int year = Integer.valueOf(oldBsnsdt.substring(0, 4));//2019
+        int month = Integer.valueOf(oldBsnsdt.substring(4, 6)) - 1;//11
+        int day = Integer.valueOf(oldBsnsdt.substring(6, 8)) + 1;//32
         c.set(year, month, day);
         Date date = c.getTime();
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMdd");

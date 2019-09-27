@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.TrbBusiMapper">
+    <resultMap id="BaseResultMap" type="com.pojo.TrbBusi">
+        <id column="STACID" property="stacid" jdbcType="DECIMAL"/>
+        <id column="SYSTID" property="systid" jdbcType="VARCHAR"/>
+        <id column="TRANDT" property="trandt" jdbcType="CHAR"/>
+        <id column="TRANSQ" property="transq" jdbcType="VARCHAR"/>
+        <id column="VCHRSQ" property="vchrsq" jdbcType="VARCHAR"/>
+        <result column="CUSTCD" property="custcd" jdbcType="VARCHAR"/>
+        <result column="TRANBR" property="tranbr" jdbcType="VARCHAR"/>
+        <result column="ACCTBR" property="acctbr" jdbcType="VARCHAR"/>
+        <result column="TYPECD" property="typecd" jdbcType="VARCHAR"/>
+        <result column="TRANAM" property="tranam" jdbcType="DECIMAL"/>
+        <result column="SMRYTX" property="smrytx" jdbcType="VARCHAR"/>
+        <result column="TRSTAT" property="trstat" jdbcType="VARCHAR"/>
+        <result column="PRCSCD" property="prcscd" jdbcType="VARCHAR"/>
+        <result column="VATXRT" property="vatxrt" jdbcType="DECIMAL"/>
+        <result column="VATXAM" property="vatxam" jdbcType="DECIMAL"/>
+        <result column="PRICAM" property="pricam" jdbcType="DECIMAL"/>
+        <result column="REGISQ" property="regisq" jdbcType="VARCHAR"/>
+        <result column="ASETMD" property="asetmd" jdbcType="VARCHAR"/>
+        <result column="ASETUN" property="asetun" jdbcType="VARCHAR"/>
+        <result column="REGIDT" property="regidt" jdbcType="CHAR"/>
+        <result column="STRKDT" property="strkdt" jdbcType="CHAR"/>
+        <result column="STRKSQ" property="strksq" jdbcType="VARCHAR"/>
+        <result column="STRKST" property="strkst" jdbcType="CHAR"/>
+        <result column="OPENAM" property="openam" jdbcType="DECIMAL"/>
+        <result column="PRCSNA" property="prcsna" jdbcType="VARCHAR"/>
+        <result column="CRCYCD" property="crcycd" jdbcType="VARCHAR"/>
+        <result column="CRCYIV" property="crcyiv" jdbcType="VARCHAR"/>
+        <result column="CUOPVX" property="cuopvx" jdbcType="DECIMAL"/>
+        <result column="CUOPAM" property="cuopam" jdbcType="DECIMAL"/>
+        <result column="OPENVX" property="openvx" jdbcType="DECIMAL"/>
+        <result column="CUOPUS" property="cuopus" jdbcType="VARCHAR"/>
+        <result column="FROMSQ" property="fromsq" jdbcType="VARCHAR"/>
+        <result column="ITEMCD" property="itemcd" jdbcType="VARCHAR"/>
+        <result column="ITEMNA" property="itemna" jdbcType="VARCHAR"/>
+        <result column="SPERDT" property="sperdt" jdbcType="CHAR"/>
+        <result column="SOURST" property="sourst" jdbcType="VARCHAR"/>
+        <result column="SOURDT" property="sourdt" jdbcType="CHAR"/>
+        <result column="SOURSQ" property="soursq" jdbcType="VARCHAR"/>
+        <result column="SOURNO" property="sourno" jdbcType="VARCHAR"/>
+        <result column="ADDITG" property="additg" jdbcType="VARCHAR"/>
+        <result column="ADDTTG" property="addttg" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Trb_Busi_Column">
+    STACID, SYSTID, TRANDT, TRANSQ, VCHRSQ, CUSTCD, TRANBR, ACCTBR, TYPECD, TRANAM, SMRYTX, 
+    TRSTAT, PRCSCD, VATXRT, VATXAM, PRICAM, REGISQ, ASETMD, ASETUN, REGIDT, STRKDT, STRKSQ, 
+    STRKST, OPENAM, PRCSNA, CRCYCD, CRCYIV, CUOPVX, CUOPAM, OPENVX, CUOPUS, FROMSQ, ITEMCD, 
+    ITEMNA, SPERDT, SOURST, SOURDT, SOURSQ, SOURNO, ADDITG, ADDTTG
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Trb_Busi_Column"/>
+        from TRB_BUSI
+        where STACID = #{stacid,jdbcType=DECIMAL}
+        and SYSTID = #{systid,jdbcType=VARCHAR}
+        and TRANDT = #{trandt,jdbcType=CHAR}
+        and TRANSQ = #{transq,jdbcType=VARCHAR}
+        and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+    </select>
+    <select id="selectTrbBusiList" resultMap="BaseResultMap">
+        select
+        <include refid="Trb_Busi_Column"/>
+        from TRB_BUSI
+        <where>
+            <include refid="aaa"></include>
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from TRB_BUSI
+    where STACID = #{stacid,jdbcType=DECIMAL}
+      and SYSTID = #{systid,jdbcType=VARCHAR}
+      and TRANDT = #{trandt,jdbcType=CHAR}
+      and TRANSQ = #{transq,jdbcType=VARCHAR}
+      and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.pojo.TrbBusi">
+    insert into TRB_BUSI (STACID, SYSTID, TRANDT, 
+      TRANSQ, VCHRSQ, CUSTCD, 
+      TRANBR, ACCTBR, TYPECD, 
+      TRANAM, SMRYTX, TRSTAT, 
+      PRCSCD, VATXRT, VATXAM, 
+      PRICAM, REGISQ, ASETMD, 
+      ASETUN, REGIDT, STRKDT, STRKSQ, 
+      STRKST, OPENAM, PRCSNA, 
+      CRCYCD, CRCYIV, CUOPVX, 
+      CUOPAM, OPENVX, CUOPUS, 
+      FROMSQ, ITEMCD, ITEMNA, 
+      SPERDT, SOURST, SOURDT, SOURSQ, 
+      SOURNO, ADDITG, ADDTTG
+      )
+    values (#{stacid,jdbcType=DECIMAL}, #{systid,jdbcType=VARCHAR}, #{trandt,jdbcType=CHAR}, 
+      #{transq,jdbcType=VARCHAR}, #{vchrsq,jdbcType=VARCHAR}, #{custcd,jdbcType=VARCHAR}, 
+      #{tranbr,jdbcType=VARCHAR}, #{acctbr,jdbcType=VARCHAR}, #{typecd,jdbcType=VARCHAR}, 
+      #{tranam,jdbcType=DECIMAL}, #{smrytx,jdbcType=VARCHAR}, #{trstat,jdbcType=VARCHAR}, 
+      #{prcscd,jdbcType=VARCHAR}, #{vatxrt,jdbcType=DECIMAL}, #{vatxam,jdbcType=DECIMAL}, 
+      #{pricam,jdbcType=DECIMAL}, #{regisq,jdbcType=VARCHAR}, #{asetmd,jdbcType=VARCHAR}, 
+      #{asetun,jdbcType=VARCHAR}, #{regidt,jdbcType=CHAR}, #{strkdt,jdbcType=CHAR}, #{strksq,jdbcType=VARCHAR}, 
+      #{strkst,jdbcType=CHAR}, #{openam,jdbcType=DECIMAL}, #{prcsna,jdbcType=VARCHAR}, 
+      #{crcycd,jdbcType=VARCHAR}, #{crcyiv,jdbcType=VARCHAR}, #{cuopvx,jdbcType=DECIMAL}, 
+      #{cuopam,jdbcType=DECIMAL}, #{openvx,jdbcType=DECIMAL}, #{cuopus,jdbcType=VARCHAR}, 
+      #{fromsq,jdbcType=VARCHAR}, #{itemcd,jdbcType=VARCHAR}, #{itemna,jdbcType=VARCHAR}, 
+      #{sperdt,jdbcType=CHAR}, #{sourst,jdbcType=VARCHAR}, #{sourdt,jdbcType=CHAR}, #{soursq,jdbcType=VARCHAR}, 
+      #{sourno,jdbcType=VARCHAR}, #{additg,jdbcType=VARCHAR}, #{addttg,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.pojo.TrbBusi">
+        insert into TRB_BUSI
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stacid != null">
+                STACID,
+            </if>
+            <if test="systid != null">
+                SYSTID,
+            </if>
+            <if test="trandt != null">
+                TRANDT,
+            </if>
+            <if test="transq != null">
+                TRANSQ,
+            </if>
+            <if test="vchrsq != null">
+                VCHRSQ,
+            </if>
+            <if test="custcd != null">
+                CUSTCD,
+            </if>
+            <if test="tranbr != null">
+                TRANBR,
+            </if>
+            <if test="acctbr != null">
+                ACCTBR,
+            </if>
+            <if test="typecd != null">
+                TYPECD,
+            </if>
+            <if test="tranam != null">
+                TRANAM,
+            </if>
+            <if test="smrytx != null">
+                SMRYTX,
+            </if>
+            <if test="trstat != null">
+                TRSTAT,
+            </if>
+            <if test="prcscd != null">
+                PRCSCD,
+            </if>
+            <if test="vatxrt != null">
+                VATXRT,
+            </if>
+            <if test="vatxam != null">
+                VATXAM,
+            </if>
+            <if test="pricam != null">
+                PRICAM,
+            </if>
+            <if test="regisq != null">
+                REGISQ,
+            </if>
+            <if test="asetmd != null">
+                ASETMD,
+            </if>
+            <if test="asetun != null">
+                ASETUN,
+            </if>
+            <if test="regidt != null">
+                REGIDT,
+            </if>
+            <if test="strkdt != null">
+                STRKDT,
+            </if>
+            <if test="strksq != null">
+                STRKSQ,
+            </if>
+            <if test="strkst != null">
+                STRKST,
+            </if>
+            <if test="openam != null">
+                OPENAM,
+            </if>
+            <if test="prcsna != null">
+                PRCSNA,
+            </if>
+            <if test="crcycd != null">
+                CRCYCD,
+            </if>
+            <if test="crcyiv != null">
+                CRCYIV,
+            </if>
+            <if test="cuopvx != null">
+                CUOPVX,
+            </if>
+            <if test="cuopam != null">
+                CUOPAM,
+            </if>
+            <if test="openvx != null">
+                OPENVX,
+            </if>
+            <if test="cuopus != null">
+                CUOPUS,
+            </if>
+            <if test="fromsq != null">
+                FROMSQ,
+            </if>
+            <if test="itemcd != null">
+                ITEMCD,
+            </if>
+            <if test="itemna != null">
+                ITEMNA,
+            </if>
+            <if test="sperdt != null">
+                SPERDT,
+            </if>
+            <if test="sourst != null">
+                SOURST,
+            </if>
+            <if test="sourdt != null">
+                SOURDT,
+            </if>
+            <if test="soursq != null">
+                SOURSQ,
+            </if>
+            <if test="sourno != null">
+                SOURNO,
+            </if>
+            <if test="additg != null">
+                ADDITG,
+            </if>
+            <if test="addttg != null">
+                ADDTTG,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stacid != null">
+                #{stacid,jdbcType=DECIMAL},
+            </if>
+            <if test="systid != null">
+                #{systid,jdbcType=VARCHAR},
+            </if>
+            <if test="trandt != null">
+                #{trandt,jdbcType=CHAR},
+            </if>
+            <if test="transq != null">
+                #{transq,jdbcType=VARCHAR},
+            </if>
+            <if test="vchrsq != null">
+                #{vchrsq,jdbcType=VARCHAR},
+            </if>
+            <if test="custcd != null">
+                #{custcd,jdbcType=VARCHAR},
+            </if>
+            <if test="tranbr != null">
+                #{tranbr,jdbcType=VARCHAR},
+            </if>
+            <if test="acctbr != null">
+                #{acctbr,jdbcType=VARCHAR},
+            </if>
+            <if test="typecd != null">
+                #{typecd,jdbcType=VARCHAR},
+            </if>
+            <if test="tranam != null">
+                #{tranam,jdbcType=DECIMAL},
+            </if>
+            <if test="smrytx != null">
+                #{smrytx,jdbcType=VARCHAR},
+            </if>
+            <if test="trstat != null">
+                #{trstat,jdbcType=VARCHAR},
+            </if>
+            <if test="prcscd != null">
+                #{prcscd,jdbcType=VARCHAR},
+            </if>
+            <if test="vatxrt != null">
+                #{vatxrt,jdbcType=DECIMAL},
+            </if>
+            <if test="vatxam != null">
+                #{vatxam,jdbcType=DECIMAL},
+            </if>
+            <if test="pricam != null">
+                #{pricam,jdbcType=DECIMAL},
+            </if>
+            <if test="regisq != null">
+                #{regisq,jdbcType=VARCHAR},
+            </if>
+            <if test="asetmd != null">
+                #{asetmd,jdbcType=VARCHAR},
+            </if>
+            <if test="asetun != null">
+                #{asetun,jdbcType=VARCHAR},
+            </if>
+            <if test="regidt != null">
+                #{regidt,jdbcType=CHAR},
+            </if>
+            <if test="strkdt != null">
+                #{strkdt,jdbcType=CHAR},
+            </if>
+            <if test="strksq != null">
+                #{strksq,jdbcType=VARCHAR},
+            </if>
+            <if test="strkst != null">
+                #{strkst,jdbcType=CHAR},
+            </if>
+            <if test="openam != null">
+                #{openam,jdbcType=DECIMAL},
+            </if>
+            <if test="prcsna != null">
+                #{prcsna,jdbcType=VARCHAR},
+            </if>
+            <if test="crcycd != null">
+                #{crcycd,jdbcType=VARCHAR},
+            </if>
+            <if test="crcyiv != null">
+                #{crcyiv,jdbcType=VARCHAR},
+            </if>
+            <if test="cuopvx != null">
+                #{cuopvx,jdbcType=DECIMAL},
+            </if>
+            <if test="cuopam != null">
+                #{cuopam,jdbcType=DECIMAL},
+            </if>
+            <if test="openvx != null">
+                #{openvx,jdbcType=DECIMAL},
+            </if>
+            <if test="cuopus != null">
+                #{cuopus,jdbcType=VARCHAR},
+            </if>
+            <if test="fromsq != null">
+                #{fromsq,jdbcType=VARCHAR},
+            </if>
+            <if test="itemcd != null">
+                #{itemcd,jdbcType=VARCHAR},
+            </if>
+            <if test="itemna != null">
+                #{itemna,jdbcType=VARCHAR},
+            </if>
+            <if test="sperdt != null">
+                #{sperdt,jdbcType=CHAR},
+            </if>
+            <if test="sourst != null">
+                #{sourst,jdbcType=VARCHAR},
+            </if>
+            <if test="sourdt != null">
+                #{sourdt,jdbcType=CHAR},
+            </if>
+            <if test="soursq != null">
+                #{soursq,jdbcType=VARCHAR},
+            </if>
+            <if test="sourno != null">
+                #{sourno,jdbcType=VARCHAR},
+            </if>
+            <if test="additg != null">
+                #{additg,jdbcType=VARCHAR},
+            </if>
+            <if test="addttg != null">
+                #{addttg,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.pojo.TrbBusi">
+        update TRB_BUSI
+        <set>
+            <if test="custcd != null">
+                CUSTCD = #{custcd,jdbcType=VARCHAR},
+            </if>
+            <if test="tranbr != null">
+                TRANBR = #{tranbr,jdbcType=VARCHAR},
+            </if>
+            <if test="acctbr != null">
+                ACCTBR = #{acctbr,jdbcType=VARCHAR},
+            </if>
+            <if test="typecd != null">
+                TYPECD = #{typecd,jdbcType=VARCHAR},
+            </if>
+            <if test="tranam != null">
+                TRANAM = #{tranam,jdbcType=DECIMAL},
+            </if>
+            <if test="smrytx != null">
+                SMRYTX = #{smrytx,jdbcType=VARCHAR},
+            </if>
+            <if test="trstat != null">
+                TRSTAT = #{trstat,jdbcType=VARCHAR},
+            </if>
+            <if test="prcscd != null">
+                PRCSCD = #{prcscd,jdbcType=VARCHAR},
+            </if>
+            <if test="vatxrt != null">
+                VATXRT = #{vatxrt,jdbcType=DECIMAL},
+            </if>
+            <if test="vatxam != null">
+                VATXAM = #{vatxam,jdbcType=DECIMAL},
+            </if>
+            <if test="pricam != null">
+                PRICAM = #{pricam,jdbcType=DECIMAL},
+            </if>
+            <if test="regisq != null">
+                REGISQ = #{regisq,jdbcType=VARCHAR},
+            </if>
+            <if test="asetmd != null">
+                ASETMD = #{asetmd,jdbcType=VARCHAR},
+            </if>
+            <if test="asetun != null">
+                ASETUN = #{asetun,jdbcType=VARCHAR},
+            </if>
+            <if test="regidt != null">
+                REGIDT = #{regidt,jdbcType=CHAR},
+            </if>
+            <if test="strkdt != null">
+                STRKDT = #{strkdt,jdbcType=CHAR},
+            </if>
+            <if test="strksq != null">
+                STRKSQ = #{strksq,jdbcType=VARCHAR},
+            </if>
+            <if test="strkst != null">
+                STRKST = #{strkst,jdbcType=CHAR},
+            </if>
+            <if test="openam != null">
+                OPENAM = #{openam,jdbcType=DECIMAL},
+            </if>
+            <if test="prcsna != null">
+                PRCSNA = #{prcsna,jdbcType=VARCHAR},
+            </if>
+            <if test="crcycd != null">
+                CRCYCD = #{crcycd,jdbcType=VARCHAR},
+            </if>
+            <if test="crcyiv != null">
+                CRCYIV = #{crcyiv,jdbcType=VARCHAR},
+            </if>
+            <if test="cuopvx != null">
+                CUOPVX = #{cuopvx,jdbcType=DECIMAL},
+            </if>
+            <if test="cuopam != null">
+                CUOPAM = #{cuopam,jdbcType=DECIMAL},
+            </if>
+            <if test="openvx != null">
+                OPENVX = #{openvx,jdbcType=DECIMAL},
+            </if>
+            <if test="cuopus != null">
+                CUOPUS = #{cuopus,jdbcType=VARCHAR},
+            </if>
+            <if test="fromsq != null">
+                FROMSQ = #{fromsq,jdbcType=VARCHAR},
+            </if>
+            <if test="itemcd != null">
+                ITEMCD = #{itemcd,jdbcType=VARCHAR},
+            </if>
+            <if test="itemna != null">
+                ITEMNA = #{itemna,jdbcType=VARCHAR},
+            </if>
+            <if test="sperdt != null">
+                SPERDT = #{sperdt,jdbcType=CHAR},
+            </if>
+            <if test="sourst != null">
+                SOURST = #{sourst,jdbcType=VARCHAR},
+            </if>
+            <if test="sourdt != null">
+                SOURDT = #{sourdt,jdbcType=CHAR},
+            </if>
+            <if test="soursq != null">
+                SOURSQ = #{soursq,jdbcType=VARCHAR},
+            </if>
+            <if test="sourno != null">
+                SOURNO = #{sourno,jdbcType=VARCHAR},
+            </if>
+            <if test="additg != null">
+                ADDITG = #{additg,jdbcType=VARCHAR},
+            </if>
+            <if test="addttg != null">
+                ADDTTG = #{addttg,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where STACID = #{stacid,jdbcType=DECIMAL}
+        and SYSTID = #{systid,jdbcType=VARCHAR}
+        and TRANDT = #{trandt,jdbcType=CHAR}
+        and TRANSQ = #{transq,jdbcType=VARCHAR}
+        and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.pojo.TrbBusi">
+    update TRB_BUSI
+    set CUSTCD = #{custcd,jdbcType=VARCHAR},
+      TRANBR = #{tranbr,jdbcType=VARCHAR},
+      ACCTBR = #{acctbr,jdbcType=VARCHAR},
+      TYPECD = #{typecd,jdbcType=VARCHAR},
+      TRANAM = #{tranam,jdbcType=DECIMAL},
+      SMRYTX = #{smrytx,jdbcType=VARCHAR},
+      TRSTAT = #{trstat,jdbcType=VARCHAR},
+      PRCSCD = #{prcscd,jdbcType=VARCHAR},
+      VATXRT = #{vatxrt,jdbcType=DECIMAL},
+      VATXAM = #{vatxam,jdbcType=DECIMAL},
+      PRICAM = #{pricam,jdbcType=DECIMAL},
+      REGISQ = #{regisq,jdbcType=VARCHAR},
+      ASETMD = #{asetmd,jdbcType=VARCHAR},
+      ASETUN = #{asetun,jdbcType=VARCHAR},
+      REGIDT = #{regidt,jdbcType=CHAR},
+      STRKDT = #{strkdt,jdbcType=CHAR},
+      STRKSQ = #{strksq,jdbcType=VARCHAR},
+      STRKST = #{strkst,jdbcType=CHAR},
+      OPENAM = #{openam,jdbcType=DECIMAL},
+      PRCSNA = #{prcsna,jdbcType=VARCHAR},
+      CRCYCD = #{crcycd,jdbcType=VARCHAR},
+      CRCYIV = #{crcyiv,jdbcType=VARCHAR},
+      CUOPVX = #{cuopvx,jdbcType=DECIMAL},
+      CUOPAM = #{cuopam,jdbcType=DECIMAL},
+      OPENVX = #{openvx,jdbcType=DECIMAL},
+      CUOPUS = #{cuopus,jdbcType=VARCHAR},
+      FROMSQ = #{fromsq,jdbcType=VARCHAR},
+      ITEMCD = #{itemcd,jdbcType=VARCHAR},
+      ITEMNA = #{itemna,jdbcType=VARCHAR},
+      SPERDT = #{sperdt,jdbcType=CHAR},
+      SOURST = #{sourst,jdbcType=VARCHAR},
+      SOURDT = #{sourdt,jdbcType=CHAR},
+      SOURSQ = #{soursq,jdbcType=VARCHAR},
+      SOURNO = #{sourno,jdbcType=VARCHAR},
+      ADDITG = #{additg,jdbcType=VARCHAR},
+      ADDTTG = #{addttg,jdbcType=VARCHAR}
+    where STACID = #{stacid,jdbcType=DECIMAL}
+      and SYSTID = #{systid,jdbcType=VARCHAR}
+      and TRANDT = #{trandt,jdbcType=CHAR}
+      and TRANSQ = #{transq,jdbcType=VARCHAR}
+      and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+  </update>
+    <sql id="aaa">
+        <if test="stacid !=null">
+            and STACID = #{stacid,jdbcType=DECIMAL}
+        </if>
+        <if test="systid !=null">
+            and SYSTID = #{systid,jdbcType=VARCHAR}
+        </if>
+        <if test="trandt !=null">
+            and TRANDT = #{trandt,jdbcType=CHAR}
+        </if>
+        <if test="transq !=null">
+            and TRANSQ = #{transq,jdbcType=VARCHAR}
+        </if>
+        <if test="vchrsq">
+            and VCHRSQ = #{vchrsq,jdbcType=VARCHAR}
+        </if>
+        <if test="custcd != null">
+            and CUSTCD = #{custcd,jdbcType=VARCHAR}
+        </if>
+        <if test="tranbr != null">
+            and TRANBR = #{tranbr,jdbcType=VARCHAR}
+        </if>
+        <if test="acctbr != null">
+            and ACCTBR = #{acctbr,jdbcType=VARCHAR}
+        </if>
+        <if test="typecd != null">
+            and TYPECD = #{typecd,jdbcType=VARCHAR}
+        </if>
+        <if test="tranam != null">
+            and TRANAM = #{tranam,jdbcType=DECIMAL}
+        </if>
+        <if test="smrytx != null">
+            and SMRYTX = #{smrytx,jdbcType=VARCHAR}
+        </if>
+        <if test="trstat != null">
+            and TRSTAT = #{trstat,jdbcType=VARCHAR}
+        </if>
+        <if test="prcscd != null">
+            and PRCSCD = #{prcscd,jdbcType=VARCHAR}
+        </if>
+        <if test="vatxrt != null">
+            and VATXRT = #{vatxrt,jdbcType=DECIMAL}
+        </if>
+        <if test="vatxam != null">
+            and VATXAM = #{vatxam,jdbcType=DECIMAL}
+        </if>
+        <if test="pricam != null">
+            and PRICAM = #{pricam,jdbcType=DECIMAL}
+        </if>
+        <if test="regisq != null">
+            and REGISQ = #{regisq,jdbcType=VARCHAR}
+        </if>
+        <if test="asetmd != null">
+            and ASETMD = #{asetmd,jdbcType=VARCHAR}
+        </if>
+        <if test="asetun != null">
+            and ASETUN = #{asetun,jdbcType=VARCHAR}
+        </if>
+        <if test="regidt != null">
+            and REGIDT = #{regidt,jdbcType=CHAR}
+        </if>
+        <if test="strkdt != null">
+            and STRKDT = #{strkdt,jdbcType=CHAR}
+        </if>
+        <if test="strksq != null">
+            and STRKSQ = #{strksq,jdbcType=VARCHAR}
+        </if>
+        <if test="strkst != null">
+            and STRKST = #{strkst,jdbcType=CHAR}
+        </if>
+        <if test="openam != null">
+            and OPENAM = #{openam,jdbcType=DECIMAL}
+        </if>
+        <if test="prcsna != null">
+            and PRCSNA = #{prcsna,jdbcType=VARCHAR}
+        </if>
+        <if test="crcycd != null">
+            and CRCYCD = #{crcycd,jdbcType=VARCHAR}
+        </if>
+        <if test="crcyiv != null">
+            and CRCYIV = #{crcyiv,jdbcType=VARCHAR}
+        </if>
+        <if test="cuopvx != null">
+            and CUOPVX = #{cuopvx,jdbcType=DECIMAL}
+        </if>
+        <if test="cuopam != null">
+            and CUOPAM = #{cuopam,jdbcType=DECIMAL}
+        </if>
+        <if test="openvx != null">
+            and OPENVX = #{openvx,jdbcType=DECIMAL}
+        </if>
+        <if test="cuopus != null">
+            and CUOPUS = #{cuopus,jdbcType=VARCHAR}
+        </if>
+        <if test="fromsq != null">
+            and FROMSQ = #{fromsq,jdbcType=VARCHAR}
+        </if>
+        <if test="itemcd != null">
+            and ITEMCD = #{itemcd,jdbcType=VARCHAR}
+        </if>
+        <if test="itemna != null">
+            and ITEMNA = #{itemna,jdbcType=VARCHAR}
+        </if>
+        <if test="sperdt != null">
+            and SPERDT = #{sperdt,jdbcType=CHAR}
+        </if>
+        <if test="sourst != null">
+            and SOURST = #{sourst,jdbcType=VARCHAR}
+        </if>
+        <if test="sourdt != null">
+            and SOURDT = #{sourdt,jdbcType=CHAR}
+        </if>
+        <if test="soursq != null">
+            and SOURSQ = #{soursq,jdbcType=VARCHAR}
+        </if>
+        <if test="sourno != null">
+            and SOURNO = #{sourno,jdbcType=VARCHAR}
+        </if>
+        <if test="additg != null">
+            and ADDITG = #{additg,jdbcType=VARCHAR}
+        </if>
+        <if test="addttg != null">
+            and ADDTTG = #{addttg,jdbcType=VARCHAR}
+        </if>
+    </sql>
+</mapper>

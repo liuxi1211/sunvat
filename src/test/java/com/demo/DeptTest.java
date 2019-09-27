@@ -26,5 +26,6 @@ public class DeptTest {
         String deptcd="009999";
         String deptSql = deptServiceImpl.getDeptSql(hashMap, deptcd);
         System.out.println("deptSql: "+deptSql);
+
     }
 }

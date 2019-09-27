@@ -20,6 +20,12 @@
             3)系统底层将Properties对象交给Spring容器进行管理-->
        <util:properties id="cfg" 
              location="classpath:configs.properties"/>
+       <!--
+       这种方式和上面的util类型，都可以装载属性配置文件，不过当前这种用法，在取数据时不一样
+       本质：new ClassPathApplicationContext("spring-config.xml").getEnvironment().getProperty("jdbcDriver")
+       ${jdbcDriver} 区别 ${cfg.jdbcDriver}
+       <context:property-placeholder location="classpath:configs.properties" ignore-resource-not-found="true"/>
+       -->
        <!-- 加载spring-model.xml(此配置文件中要配置
             service,dao,datasource,mybatis) -->
        <import resource="classpath:spring/spring-model.xml"/>

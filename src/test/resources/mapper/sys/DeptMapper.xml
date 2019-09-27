@@ -13,15 +13,267 @@
         a.reptfg "reptfg"
         FROM com_dist_rela a
         inner join pcmc_dept b on a.deptcd = b.deptcode
-        WHERE  a.relatp='02'
+        WHERE a.relatp='02'
         <if test="stacid != null and stacid !=''">
             and a.stacid=#{stacid}
         </if>
         <if test="deptcd != null and deptcd !=''">
-            and  a.deptcd=#{deptcd}
+            and a.deptcd=#{deptcd}
         </if>
         <if test="reptdp != null and reptdp !=''">
-            and  a.reptdp=#{reptdp}
+            and a.reptdp=#{reptdp}
         </if>
     </select>
+    <select id="queryTxaVchr" resultType="int">
+        select count (1) from iva_book where vatidt &gt;= #{begin} and vatidt &lt;= #{end}
+    </select>
+
+    <insert id="insertOdsglbalanceint" parameterType="java.util.HashMap">
+		insert into ODS_GL_BALANCE_INT
+    (
+    data_type,
+    data_date,
+    source_name,
+    actual_flag,
+    accounting_date,
+    currency_code,
+    company_code,
+    account_code,
+    product_code,
+    trx_product_code,
+    extend_segment1,
+    extend_segment2,
+    extend_segment3,
+    extend_segment4,
+    extend_segment5,
+    extend_segment6,
+    extend_segment7,
+    TOTAL_DR,
+    balance_dr,
+    TOTAL_CR,
+    balance_cr,
+    trandt,
+    DIRECTION
+    )
+    select 'ODS_VAT',
+    tv.trandt,
+    '8',
+    'A',
+    tv.trandt,
+    tv.crcycd,
+    tv.acctbr,
+    tv.itemcd,
+    decode(tv.assis8,null,'0','*','0',tv.assis8),
+    decode(tv.assis9,null,'0','*','0',tv.assis9),
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    (select ogbi.balance_dr
+    from ODS_GL_BALANCE_INT ogbi
+    where ogbi.accounting_date =to_char(to_date(tv.trandt,'YYYY-MM-dd')-1,'YYYYMMdd')
+    AND ogbi.currency_code = tv.crcycd
+    AND ogbi.company_code = tv.acctbr
+    AND ogbi.account_code = tv.itemcd
+     AND ogbi.product_code =  decode(tv.assis8,null,'0','*','0',tv.assis8)
+    AND ogbi.trx_product_code= decode(tv.assis9,null,'0','*','0',tv.assis9)
+    and ogbi.DIRECTION=tv.amntcd) total_dr,
+
+    decode(tv.amntcd,
+    'D',
+    sum(tv.tranam) +
+    decode(substrb(tv.itemcd, 1, 1),
+    '6',
+    decode(substrb(tv.trandt, 5, 4),
+    '0101',
+    '0'
+    ,
+    NVL((select ogbi.balance_dr
+    from ODS_GL_BALANCE_INT ogbi
+    where ogbi.accounting_date =to_char(to_date(tv.trandt,'YYYY-MM-dd')-1,'YYYYMMdd')
+    AND ogbi.currency_code = tv.crcycd
+    AND ogbi.company_code = tv.acctbr
+    AND ogbi.account_code = tv.itemcd
+     AND ogbi.product_code =  decode(tv.assis8,null,'0','*','0',tv.assis8)
+    AND ogbi.trx_product_code= decode(tv.assis9,null,'0','*','0',tv.assis9)
+    and ogbi.DIRECTION=tv.amntcd),
+    0)),
+    '2',
+    decode(substrb(tv.trandt, 5, 4),
+    '0101',
+    '0'
+    ,
+    '0401',
+    '0'
+    ,
+    '0701',
+    '0'
+    ,
+    '1001',
+    '0'
+    ,
+    NVL((select ogbi.balance_dr
+    from ODS_GL_BALANCE_INT ogbi
+    where ogbi.accounting_date =to_char(to_date(tv.trandt,'YYYY-MM-dd')-1,'YYYYMMdd')
+    AND ogbi.currency_code = tv.crcycd
+    AND ogbi.company_code = tv.acctbr
+    AND ogbi.account_code = tv.itemcd
+      AND ogbi.product_code =  decode(tv.assis8,null,'0','*','0',tv.assis8)
+    AND ogbi.trx_product_code= decode(tv.assis9,null,'0','*','0',tv.assis9)
+    and ogbi.DIRECTION=tv.amntcd),
+    0)))
+    ,
+    '0'),
+    (select ogbi.balance_cr
+    from ODS_GL_BALANCE_INT ogbi
+    where ogbi.accounting_date =to_char(to_date(tv.trandt,'yyyyMMdd')-1,'yyyyMMdd')
+    AND ogbi.currency_code = tv.crcycd
+    AND ogbi.company_code = tv.acctbr
+    AND ogbi.account_code = tv.itemcd
+     AND ogbi.product_code =  decode(tv.assis8,null,'0','*','0',tv.assis8)
+    AND ogbi.trx_product_code= decode(tv.assis9,null,'0','*','0',tv.assis9)
+    and ogbi.DIRECTION=tv.amntcd) total_cr,
+    decode(tv.amntcd,
+    'C',
+    sum(tv.tranam) +
+    decode(substrb(tv.itemcd, 1, 1),
+    '6',
+    decode(substrb(tv.trandt, 5, 4),
+    '0101',
+    '0'
+    ,
+    NVL((select ogbi.balance_cr
+    from ODS_GL_BALANCE_INT ogbi
+    where ogbi.accounting_date =to_char(to_date(tv.trandt,'yyyyMMdd')-1,'yyyyMMdd')
+    AND ogbi.currency_code = tv.crcycd
+    AND ogbi.company_code = tv.acctbr
+    AND ogbi.account_code = tv.itemcd
+     AND ogbi.product_code =  decode(tv.assis8,null,'0','*','0',tv.assis8)
+    AND ogbi.trx_product_code= decode(tv.assis9,null,'0','*','0',tv.assis9)
+    and ogbi.DIRECTION=tv.amntcd)
+    ,
+    0)),
+    '2',
+    decode(substrb(tv.trandt, 5, 4),
+    '0101',
+    '0'
+    ,
+    '0401',
+    '0'
+    ,
+    '0701',
+    '0'
+    ,
+    '1001',
+    '0'
+    ,
+    NVL((select ogbi.balance_cr
+    from ODS_GL_BALANCE_INT ogbi
+    where ogbi.accounting_date =to_char(to_date(tv.trandt,'YYYY-MM-dd')-1,'YYYYMMdd')
+    AND ogbi.currency_code = tv.crcycd
+    AND ogbi.company_code = tv.acctbr
+    AND ogbi.account_code = tv.itemcd
+    AND ogbi.product_code =  decode(tv.assis8,null,'0','*','0',tv.assis8)
+    AND ogbi.trx_product_code= decode(tv.assis9,null,'0','*','0',tv.assis9)
+    and ogbi.DIRECTION=tv.amntcd),
+    0)))
+    ,
+    0),
+    #{bsnsdt},
+    tv.amntcd
+    from txa_vchr tv
+    where tv.trandt = #{bsnsdt}
+    group by  decode(tv.assis8,null,'0','*','0',tv.assis8) ,
+    decode(tv.assis9,null,'0','*','0',tv.assis9),
+    tv.trandt,
+    tv.crcycd,
+    tv.acctbr,
+    tv.itemcd,
+    tv.amntcd
+	</insert>
+    <insert id="insertOdsgljournalint" parameterType="java.util.HashMap">
+insert into ODS_GL_JOURNAL_INT
+(
+    data_type,
+    data_date,
+    source_name,
+    actual_flag,
+    transaction_date,
+    accounting_date,
+    currency_code,
+    conversion_type_name,
+    conversion_date,
+    company_code,
+    account_code,
+    product_code,
+    trx_product_code,
+    extend_segment1,
+    extend_segment2,
+    extend_segment3,
+    extend_segment4,
+    extend_segment5,
+    extend_segment6,
+    extend_segment7,
+    direction,
+    amount,
+    reference1,
+    reference2,
+    reference3,
+    reference4,
+    reference5,
+    reference6,
+    reference7,
+    reference8,
+    reference9,
+    reference10,
+  trandt
+)
+SELECT
+     'ODS_VAT',
+     tv.trandt,
+     '8',
+     'A',
+     tv.trandt,
+     tv.trandt,
+     tv.crcycd,
+     'Corporate',
+     tv.trandt,
+     tv.acctbr,
+     tv.itemcd,
+     decode(tv.assis8,null,'0','*','0',tv.assis8),
+     decode(tv.assis9,null,'0','*','0',tv.assis9),
+     '',
+     '',
+     '',
+     '',
+     '',
+     '',
+     '',
+     tv.amntcd,
+     sum(tv.tranam),
+     '',
+     '',
+     '',
+     '',
+     '',
+     '',
+     '',
+     '',
+     '',
+     '',
+  #{trandt}
+   FROM txa_vchr tv
+   where tv.trandt =#{bsnsdt}
+   group by
+    decode(tv.assis8,null,'0','*','0',tv.assis8),
+    decode(tv.assis9,null,'0','*','0',tv.assis9),
+     tv.crcycd,
+     tv.trandt,
+     tv.acctbr,
+     tv.itemcd,
+     tv.amntcd
+	</insert>
 </mapper>

@@ -38,7 +38,7 @@
         <servlet-name>frontController</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
-            <!-- 通过此参数的配置加载spring配置文件，然后初始化资源 -->
+            <!-- 通过此参数的配置加载spring配置文件，然后初始化资源 --> `
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring-configs.xml</param-value>
         </init-param>

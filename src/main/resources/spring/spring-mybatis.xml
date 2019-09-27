@@ -23,7 +23,7 @@
              <!-- 配置映射文件所在路径 -->
              <property name="MapperLocations" 
                        value="classpath*:mapper/sys/*.xml"></property>
-             <property name="typeAliasesPackage" value="com.pojo"/>  <!-- 别名包 -->
+             <property name="typeAliasesPackage" value="com.pojo"/>  <!-- 别名包 自动扫描包下面的所有类，当作别名，有可能出现重复，使用@Alias("名") 注解消除重名问题-->
        </bean>
        <!-- 整合MapperScannerConfigurer对象，通过此对象扫描指定包中
          dao/mapper接口,然后底层会通过代理机制，为接口创建一个实现类

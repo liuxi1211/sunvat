@@ -27,8 +27,7 @@ public class PcmcUserController {
     private   Log log= LogFactory.getLog(PcmcUserController.class);
     @Autowired
     private UserServiceImpl userServiceImpl;
-    @Autowired
-    private HttpServiceImpl httpService;
+
     @Autowired
     private PcmcUserService pcmcUserService;
 

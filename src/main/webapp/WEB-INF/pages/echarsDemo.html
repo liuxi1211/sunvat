@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>系统数据监控</title>
+    <script type="text/javascript" src="../js/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    var myechar=echarts.init(document.getElementById('main'));
+    var option={
+        title:{
+            text:"系统数据监控"
+        },
+        tooltip:{},
+        legend:{
+            data:['财务系统累计发生额']
+        },
+        xAxis:{
+            data:["20190801","20190802","20190803","20190804","20190805","20190806","20190807","20190808","20190809"]
+        },
+        yAxis:{},
+        series:[{
+            name:'累计发生额',
+            type:'bar',
+            data:[11,234,456,789,1123,3456,7712,7812,4567]
+        }]
+    };
+    myechar.setOption(option);
+</script>
+</body>
+</html>
