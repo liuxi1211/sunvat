@@ -3,20 +3,20 @@ package com.pojo;
 import java.io.Serializable;
 
 /**
- * »ú¹¹¹ØÏµÀà
+ * æœºæ„å…³ç³»ç±»
  */
 public class DistRelaBean implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4344805553337766064L;
-	private String deptcd;//»ú¹¹ºÅ
-	private String sprrdp;//ÉÏ¼¶»ú¹¹
-	private int levelp;//µÈ¼¶
-	private int stacid;//ÕËÌ×
+	private String deptcd;//æœºæ„å·
+	private String sprrdp;//ä¸Šçº§æœºæ„
+	private int levelp;//ç­‰çº§
+	private int stacid;//è´¦å¥—
 	private String relatp;
-	private String reptdp;//Éê±¨Æµ¶È
-	private String reptfg;//ÊÇ·ñ³ö¾ß±¨±í
+	private String reptdp;//ç”³æŠ¥é¢‘åº¦
+	private String reptfg;//æ˜¯å¦å‡ºå…·æŠ¥è¡¨
 	
 	/*public DistRelaBean(String deptcd,int levelp,String sprrdp){
 		this.deptcd = deptcd;
